@@ -1,22 +1,20 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import Constant from 'expo-constants';
-
+import { Text, View} from 'react-native';
 
 export default function Header() {
   return (
     <View style={{
-        marginTop:Constant.statusBarHeight,
         alignSelf: 'stretch',
-        backgroundColor:"lightblue",
-        textAlign: 'center',
+        backgroundColor:"skyblue",
+        height: 60,       
     }}>
 
-     <View>
          <Text style={{
-           fontWeight: 'bold'
-         }}> This is a test. </Text>
-     </View>
+           fontWeight: 'bold',
+           textAlign: 'center',
+           fontSize: '22',
+           marginTop: 20,
+         }}> Weather App </Text>
     </View>
   );
 }

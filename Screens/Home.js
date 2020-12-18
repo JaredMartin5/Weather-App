@@ -5,19 +5,24 @@ import  Header  from '../Components/Header';
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
+    <View>
       <Header />
-      <Text> Weather App </Text>
       <StatusBar style="auto" />
+      <View style={styles.container}>
+      <Text> Enter your city name:</Text>
+      </View>
     </View>
+
+    
   );
 }
 
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   
   },
 });
+
