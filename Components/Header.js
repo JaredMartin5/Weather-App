@@ -14,7 +14,7 @@ export default function Header() {
          <Text style={{
            fontWeight: 'bold',
            textAlign: 'center',
-           fontSize: '22',
+           fontSize: 22,
            marginTop: 20,
          }}> Weather App </Text>
     </View>
