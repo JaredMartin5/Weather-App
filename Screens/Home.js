@@ -1,14 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import CurrentPosition from '../Components/Geolocation';
 import  Header  from '../Components/Header';
 import customData from '../keys.json';
 
 export default function HomeScreen() {
 
   const [info, setInfo] = useState({
-    name: "loading!!",
-    temp: "loading!!"
+    name: "loading",
+    temp: "loading",
+    humidity: "loading",
+    weather: "loading"
   })
 
   useEffect(() =>{
@@ -22,7 +25,9 @@ export default function HomeScreen() {
       console.log(results)
       setInfo({
         name:results.name,
-        temp:results.main.temp
+        temp:results.main.temp,
+        humidity:results.main.humidity,
+        weather:results.weather[0].main
       })
     })
   }
@@ -32,10 +37,10 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Header />
+      <Header /> 
+      <CurrentPosition /> 
       <StatusBar style="auto" />
-      <Text>{info.name}</Text>
-      <Text>{info.temp}°</Text>
+      <Text>{info.name} {"\n"}Temperature: {info.temp}° {"\n"}Humidity: {info.humidity}% {"\n"}Weather: {info.weather} </Text>
     </View>
 
     
