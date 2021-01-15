@@ -9,11 +9,11 @@ import * as Location from 'expo-location';
 export default function HomeScreen() {
 
   const [info, setInfo] = useState({
-    name: "loading",
+    name: "Need to have location enabled to work.",
     temp: "loading",
     humidity: "loading",
     weather: "loading",
-    icon:"loading"
+    icon: "01d"
   })
 
   const {icon} = info.icon
