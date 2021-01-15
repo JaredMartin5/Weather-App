@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import  Header  from '../Components/Header';
 import customData from '../keys.json';
 import * as Location from 'expo-location';
@@ -12,8 +12,11 @@ export default function HomeScreen() {
     name: "loading",
     temp: "loading",
     humidity: "loading",
-    weather: "loading"
+    weather: "loading",
+    icon:"loading"
   })
+
+  const {icon} = info.icon
 
   useEffect(() =>{
     getWeather()
@@ -30,21 +33,23 @@ export default function HomeScreen() {
           name:results.name,
           temp:results.main.temp,
           humidity:results.main.humidity,
-          weather:results.weather[0].main
+          weather:results.weather[0].main,
+          icon:results.weather[0].icon
         })
       })
     })
   }
 
 
-
+  const iconUrl =  "http://openweathermap.org/img/wn/" + info.icon + "@2x.png"
 
   return (
     <View style={styles.container}>
       <Header /> 
-      {/* <Text><CurrentPosition /></Text> */}
       <StatusBar style="auto" />
-      <Text>{info.name} {"\n"}Temperature: {info.temp}° {"\n"}Humidity: {info.humidity}% {"\n"}Weather: {info.weather} </Text>
+      <Text>{info.name}</Text>
+        <Image style={styles.weatherIcon} source={{ uri: iconUrl }} />
+      <Text>Temperature: {info.temp}℉ {"\n"}Humidity: {info.humidity}% {"\n"}Description: {info.weather} </Text>
     </View>
 
     
@@ -54,10 +59,13 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  
+    alignItems: 'center'
   },
+
+    weatherIcon: {
+      width: 100,
+      height: 100
+    }
 });
 
 
